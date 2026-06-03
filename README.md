@@ -48,11 +48,155 @@ Deploy the website.
 Upload to GitHub Pages for free hosting.
 
 ## PROGRAM
+JSX FILE 
+```
+import React, { useState } from "react";
+import "./Calculator.css";
 
+function Calculator() {
+  const [input, setInput] = useState("");
 
+  const handleClick = (value) => {
+    setInput(input + value);
+  };
+
+  const calculate = () => {
+    try {
+      setInput(eval(input).toString());
+    } catch {
+      setInput("Error");
+    }
+  };
+
+  const clearInput = () => {
+    setInput("");
+  };
+
+  return (
+    <div className="container">
+      <div className="calculator">
+        <h2>Simple Calculator</h2>
+
+        <input
+          type="text"
+          value={input}
+          readOnly
+          className="display"
+        />
+
+        <div className="buttons">
+          <button onClick={clearInput}>C</button>
+          <button onClick={() => handleClick("/")}>/</button>
+          <button onClick={() => handleClick("*")}>*</button>
+          <button onClick={() => handleClick("-")}>-</button>
+
+          <button onClick={() => handleClick("7")}>7</button>
+          <button onClick={() => handleClick("8")}>8</button>
+          <button onClick={() => handleClick("9")}>9</button>
+          <button onClick={() => handleClick("+")}>+</button>
+
+          <button onClick={() => handleClick("4")}>4</button>
+          <button onClick={() => handleClick("5")}>5</button>
+          <button onClick={() => handleClick("6")}>6</button>
+          <button onClick={calculate}>=</button>
+
+          <button onClick={() => handleClick("1")}>1</button>
+          <button onClick={() => handleClick("2")}>2</button>
+          <button onClick={() => handleClick("3")}>3</button>
+          <button onClick={() => handleClick("0")}>0</button>
+
+          <button onClick={() => handleClick(".")}>.</button>
+        </div>
+      </div>
+
+      <footer>
+        <p>Name: THARUN</p>
+        <p>Register Number: YOUR_REGISTER_NUMBER</p>
+      </footer>
+    </div>
+  );
+}
+
+export default Calculator;
+```
+CSS FILE
+```
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  min-height: 100vh;
+  background: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.calculator {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 320px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.calculator h2 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.display {
+  width: 100%;
+  padding: 10px;
+  font-size: 20px;
+  margin-bottom: 15px;
+  text-align: right;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.buttons button {
+  padding: 15px;
+  font-size: 18px;
+  border: none;
+  background: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.buttons button:hover {
+  background: #0056b3;
+}
+
+footer {
+  margin-top: 20px;
+  text-align: center;
+}
+```
+APP.JSX
+```
+import Calculator from "./Calculator";
+
+function App() {
+  return <Calculator />;
+}
+
+export default App;
+```
 
 ## OUTPUT
 
+<img width="676" height="393" alt="image" src="https://github.com/user-attachments/assets/55131006-9ed1-4639-88c3-381c3700222c" />
 
 ## RESULT
 The program for developing a simple calculator in React.js is executed successfully.
